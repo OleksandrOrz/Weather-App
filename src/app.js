@@ -40,6 +40,7 @@ function currentWeatherCity(res) {
       "src",
       `http://openweathermap.org/img/wn/${res.data.weather[0].icon}@2x.png`
     );
+  celTemperature = res.data.main.temp;
 }
 function citySearch(event) {
   event.preventDefault();
@@ -64,3 +65,21 @@ function curLoc() {
   console.log(navig);
 }
 document.querySelector("#currentLocation").addEventListener("click", curLoc);
+// celsius and fahrenheit
+function fahrConvertation(event) {
+  event.preventDefault();
+  cel.classList.remove("active");
+  fahr.classList.add("active");
+  document.querySelector("#temp").innerHTML = Math.round(
+    celTemperature * 1.8 + 32
+  );
+}
+function celConvertation(event) {
+  event.preventDefault();
+  cel.classList.add("active");
+  fahr.classList.remove("active");
+  document.querySelector("#temp").innerHTML = Math.round(celTemperature);
+}
+let celTemperature = null;
+document.querySelector("#fahr").addEventListener("click", fahrConvertation);
+document.querySelector("#cel").addEventListener("click", celConvertation);

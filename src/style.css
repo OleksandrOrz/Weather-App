@@ -69,10 +69,17 @@ ul {
   font-size: 60px;
   font-weight: 500;
 }
-#celFar {
+#units {
   position: relative;
-  font-size: 15px;
+  font-size: 16px;
   top: -32px;
+  font-weight: 400;
+}
+#units a {
+  text-decoration: none;
+}
+#units .active:hover {
+  color: black;
 }
 #codedBy {
   color: rgba(39, 33, 66, 0.4);
@@ -86,4 +93,8 @@ ul {
 }
 #description {
   text-transform: capitalize;
+}
+.active {
+  color: black;
+  cursor: default;
 }
