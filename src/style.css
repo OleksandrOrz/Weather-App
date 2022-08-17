@@ -21,7 +21,7 @@ input {
   border: none;
   border-radius: 10px;
   height: 50px;
-  padding: 0 0 0 20px;
+  padding: 0 10px 0 20px;
   outline: none;
   color: rgba(39, 33, 66, 0.4);
   font-size: 15px;
@@ -53,7 +53,7 @@ ul {
   padding: 0;
   margin: 0px 0px 10px 20px;
 }
-.currentlocation {
+#currentLocation {
   margin: 40px 0px 40px 20px;
   width: 180px;
   background-color: #2a6ae0;
@@ -79,4 +79,11 @@ ul {
   font-size: 12px;
   text-align: center;
   margin: 45px;
+}
+#humidity,
+#wind {
+  color: red;
+}
+#description {
+  text-transform: capitalize;
 }

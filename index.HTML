@@ -12,11 +12,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div id="weatherApp">
       <div class="container">
-        <button class="currentlocation">
+        <button id="currentLocation">
           🗺️ Weather in your <br />
           current location
         </button>
@@ -26,17 +27,19 @@
         </form>
         <div class="row">
           <div class="col-6">
-            <h1>Kyiv</h1>
+            <h1></h1>
             <ul>
-              <li><span id="time">Friday 05:00</span></li>
+              <li><span id="time"></span><span id="description"></span></li>
               <li>
-                Humidity: <span id="huumidity"></span>, Wind:
+                Humidity: <span id="humidity"></span>, Wind:
                 <span id="wind"></span>
               </li>
             </ul>
           </div>
           <div class="col-6">
-            <div id="currentTemp">☀️22<span id="celFar">°C|°F</span></div>
+            <div id="currentTemp">
+              ☀️<span id="temp"></span><span id="celFar">°C|°F</span>
+            </div>
           </div>
         </div>
         <div id="codedBy">
@@ -53,6 +56,5 @@
     </div>
 
     <script src="src/app.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </body>
 </html>
