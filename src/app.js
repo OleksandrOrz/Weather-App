@@ -25,7 +25,6 @@ document.querySelector("#time").innerHTML = `${
 
 // City search
 function currentWeatherCity(res) {
-  console.log(res);
   document.querySelector("h1").innerHTML = `${res.data.name}`;
   document.querySelector("#humidity").innerHTML = `${res.data.main.humidity}%`;
   document.querySelector("#wind").innerHTML = `${Math.round(
@@ -41,6 +40,8 @@ function currentWeatherCity(res) {
       `http://openweathermap.org/img/wn/${res.data.weather[0].icon}@2x.png`
     );
   celTemperature = res.data.main.temp;
+
+  forecastApi(res.data.coord);
 }
 function citySearch(event) {
   event.preventDefault();
@@ -83,3 +84,49 @@ function celConvertation(event) {
 let celTemperature = null;
 document.querySelector("#fahr").addEventListener("click", fahrConvertation);
 document.querySelector("#cel").addEventListener("click", celConvertation);
+
+// day transform
+function day(ms) {
+  let day = new Date(ms * 1000);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let dayF = day.getDay();
+  return days[dayF];
+}
+// forecast
+function forecast(res) {
+  let forecastDays = res.data.daily;
+  let forecast = "";
+  forecastDays.forEach(function (forecastW, index) {
+    if (index < 6) {
+      console.log(forecastW);
+      forecast =
+        forecast +
+        `
+  <div class="col-sm forecastW">
+   <div class="forecastDay">${day(forecastW.dt)}</div>
+   <div class="forecastIcon"><img src="http://openweathermap.org/img/wn/${
+     forecastW.weather[0].icon
+   }@2x.png" width=70></div>
+   <div class="forecastTemp">
+     <span class="forecastMaxTemp">${Math.round(forecastW.temp.max)}°</span>
+     <span class="forecastMinTemp">${Math.round(forecastW.temp.min)}° </span>
+   </div>
+  </div>`;
+    }
+  });
+
+  document.querySelector("#forecast").innerHTML = forecast;
+}
+
+function forecastApi(res) {
+  let apiUrlF = `https://api.openweathermap.org/data/2.5/onecall?lat=${res.lat}&lon=${res.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrlF).then(forecast);
+}

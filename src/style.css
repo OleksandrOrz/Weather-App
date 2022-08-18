@@ -98,3 +98,27 @@ ul {
   color: black;
   cursor: default;
 }
+#forecast {
+  margin: 40px 0;
+}
+.forecastW {
+  text-align: center;
+}
+.forecastDay {
+  color: rgba(39, 33, 66, 0.4);
+}
+.forecastTemp {
+  font-size: 17px;
+  font-weight: 600;
+}
+.forecastMaxTemp {
+  color: rgb(231, 37, 37);
+}
+
+.forecastMinTemp {
+  color: rgb(175, 104, 104);
+}
+.forecastIcon img {
+  display: block;
+  margin: 0 auto;
+}
