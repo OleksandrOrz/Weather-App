@@ -42,6 +42,8 @@ function currentWeatherCity(res) {
   celTemperature = res.data.main.temp;
   //Виклик функції Api для прогнозу
   forecastApi(res.data.coord);
+  cel.classList.add("active");
+  fahr.classList.remove("active");
 }
 // Функція Api запиту по введеному місту
 function citySearch(event) {
